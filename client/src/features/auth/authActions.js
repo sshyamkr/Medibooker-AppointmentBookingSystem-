@@ -6,7 +6,7 @@ export const login = createAsyncThunk(
   async (credentials, { rejectWithValue }) => {
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/auth/login",
+        "https://docbook-5g4m.onrender.com/api/auth/login",
         credentials
       );
       return response.data;
@@ -21,7 +21,7 @@ export const register = createAsyncThunk(
   async (credentials, { rejectWithValue }) => {
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/auth/register",
+        "https://docbook-5g4m.onrender.com/api/auth/register",
         credentials
       );
       return response.data;

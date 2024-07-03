@@ -7,7 +7,7 @@ export const fetchAppointments = createAsyncThunk(
     const token = getState().auth.token;
     try {
       const response = await axios.get(
-        "http://localhost:5000/api/appointments",
+        "https://docbook-5g4m.onrender.com/api/appointments",
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -25,7 +25,7 @@ export const createAppointment = createAsyncThunk(
     const token = getState().auth.token;
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/appointments",
+        "https://docbook-5g4m.onrender.com/api/appointments",
         appointmentData,
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -43,9 +43,12 @@ export const deleteAppointment = createAsyncThunk(
   async (id, { getState, rejectWithValue }) => {
     const token = getState().auth.token;
     try {
-      await axios.delete(`http://localhost:5000/api/appointments/${id}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      await axios.delete(
+        `https://docbook-5g4m.onrender.com/api/appointments/${id}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       return id;
     } catch (error) {
       return rejectWithValue(error.response.data);

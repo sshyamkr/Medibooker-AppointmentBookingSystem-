@@ -33,7 +33,9 @@ const Dashboard = () => {
 
   const fetchDoctors = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/doctors");
+      const response = await axios.get(
+        "https://docbook-5g4m.onrender.com/api/doctors"
+      );
       setDoctors(response.data);
     } catch (error) {
       console.error("Error fetching doctors:", error);

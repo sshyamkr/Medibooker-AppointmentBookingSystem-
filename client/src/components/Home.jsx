@@ -31,7 +31,7 @@ function Home() {
               stiffness: 260,
               damping: 20,
             }}
-            className="w-[350px] h-[250px] text-center flex flex-col justify-center items-center  rounded-3xl shadow-xl p-2"
+            className="w-[350px] h-[250px] text-center flex flex-col justify-center items-center  rounded-3xl shadow-xl p-2 bg-gradient-to-r from-blue-200 to-cyan-200"
           >
             <h2 className="text-xl font-semibold">Quick Appointment</h2>
             <p>Seamlessly schedule and manage your appointments</p>
@@ -44,7 +44,7 @@ function Home() {
               stiffness: 260,
               damping: 20,
             }}
-            className="w-[350px] h-[250px] text-center flex flex-col justify-center items-center shadow-xl rounded-3xl p-2"
+            className="w-[350px] h-[250px] text-center flex flex-col justify-center items-center shadow-xl rounded-3xl p-2 bg-gradient-to-r from-blue-200 to-cyan-200"
           >
             <h2 className="text-xl font-semibold">Doctor Consultations</h2>
             <p>Connect with experienced doctors with just few clicks!</p>

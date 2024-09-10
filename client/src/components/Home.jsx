@@ -20,8 +20,8 @@ function Home() {
           </motion.div>
         </Link>
       </div>
-      <div className="flex flex-col justify-center items-center mt-5 ">
-        <h3 className="text-3xl font-semibold mt-5">What We Offer!</h3>
+      <div className="flex flex-col justify-center items-center my-5 ">
+        <h3 className="text-3xl font-semibold py-4">What We Offer!</h3>
         <div className="flex flex-col sm:flex-row justify-center gap-10">
           <motion.div
             initial={{ scale: 0 }}

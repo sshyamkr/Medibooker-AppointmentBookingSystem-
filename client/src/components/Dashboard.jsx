@@ -8,6 +8,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { loadUser } from "../features/auth/authSlice";
 
 const Dashboard = () => {
   const [date, setDate] = useState("");
@@ -16,14 +17,25 @@ const Dashboard = () => {
   const [doctors, setDoctors] = useState([]);
 
   const dispatch = useDispatch();
-  const navigate = useNavigate(); // Use navigate for routing
-  const { user } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
+  const { user, loading: userLoading } = useSelector((state) => state.auth);
   const { appointments, loading, error } = useSelector(
     (state) => state.appointments
   );
 
   useEffect(() => {
-    if (user) {
+    const storedToken = localStorage.getItem("token");
+    if (storedToken) {
+      dispatch(loadUser()); // Load user data if token exists
+    } else {
+      navigate("/login"); // Redirect to login if no token is found
+    }
+  }, [dispatch, navigate]);
+
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
+  useEffect(() => {
+    if (user && user.role) {
       dispatch(fetchAppointments());
       if (user.role === "patient") {
         fetchDoctors();
@@ -31,11 +43,14 @@ const Dashboard = () => {
     }
   }, [dispatch, user]);
 
+  // useEffect(() => {
+  //   console.log("Appointments:", appointments); // Log appointments
+  //   console.log("User ID:", user._id); // Log user ID
+  // }, [appointments, user._id]);
+
   const fetchDoctors = async () => {
     try {
-      const response = await axios.get(
-        "https://docbook-5g4m.onrender.com/api/doctors"
-      );
+      const response = await axios.get(`${API_BASE_URL}/api/doctors`);
       setDoctors(response.data);
     } catch (error) {
       console.error("Error fetching doctors:", error);
@@ -58,11 +73,15 @@ const Dashboard = () => {
     toast.success("Appointment Removed");
   };
 
+  if (userLoading || !user) {
+    return <div>Loading...</div>; // Show loading state
+  }
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
       <div className="w-full max-w-4xl p-8 space-y-8 bg-white rounded-xl shadow-md">
         <h2 className="text-2xl font-bold text-center">
-          Welcome {user && user.role && user.username}
+          Welcome {user.username}
         </h2>
 
         {user.role === "patient" && (
@@ -115,7 +134,7 @@ const Dashboard = () => {
                 <div className="mt-4 space-y-4">
                   {appointments
                     .filter(
-                      (appointment) => appointment.patient._id === user.id
+                      (appointment) => appointment.patient._id === user._id
                     )
                     .map((appointment) => (
                       <div
@@ -147,7 +166,7 @@ const Dashboard = () => {
             ) : (
               <div className="mt-4 space-y-4">
                 {appointments
-                  .filter((appointment) => appointment.doctor._id === user.id)
+                  .filter((appointment) => appointment.doctor._id === user._id)
                   .map((appointment) => (
                     <div
                       key={appointment._id}

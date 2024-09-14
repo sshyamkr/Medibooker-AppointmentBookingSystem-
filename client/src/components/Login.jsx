@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { login } from "../features/auth/authActions";
+import { useDispatch } from "react-redux";
+import { loginUser } from "../features/auth/authSlice";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
@@ -9,16 +9,19 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { loading, error, user } = useSelector((state) => state.auth);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(login({ username, password })).then((action) => {
-      if (action.type === "auth/login/fulfilled") {
+    dispatch(loginUser({ username, password }))
+      .unwrap()
+      .then(() => {
         navigate("/");
         toast.success("Log In Success");
-      }
-    });
+      })
+      .catch((error) => {
+        console.error("Login failed", error);
+        toast.error("Logged failed");
+      });
   };
 
   return (
@@ -63,12 +66,11 @@ const Login = () => {
           <div>
             <button
               type="submit"
-              disabled={loading}
-              className={`group relative flex w-full justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white ${
-                loading ? "bg-gray-500" : "bg-[#28da40] hover:bg-indigo-700"
-              } focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}
+              className={`group relative flex w-full justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white 
+                bg-[#28da40] hover:bg-indigo-700
+               focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}
             >
-              {loading ? "Logging in..." : "Login"}
+              Login
             </button>
           </div>
         </form>
@@ -82,9 +84,6 @@ const Login = () => {
               Register
             </Link>
           </p>
-          {error && (
-            <p className="mt-2 text-sm text-red-600">{error.message}</p>
-          )}
         </div>
       </div>
     </div>

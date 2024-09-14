@@ -17,6 +17,13 @@ const register = async (req, res) => {
       password: hashedPassword,
       role,
     });
+    const token = jwt.sign(
+      { id: user._id, role: user.role },
+      process.env.JWT_SECRET,
+      {
+        expiresIn: "30d",
+      }
+    );
     if (user) {
       return res.status(201).json({
         _id: user.id,
@@ -66,4 +73,22 @@ const login = async (req, res) => {
   }
 };
 
-module.exports = { register, login };
+//get user
+const getUser = async (req, res) => {
+  try {
+    const token = req.headers.authorization.split(" ")[1];
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+    const user = await User.findById(decoded.id).select("-password");
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(401).json({ message: "Not authorized", error });
+  }
+};
+
+module.exports = { register, login, getUser };

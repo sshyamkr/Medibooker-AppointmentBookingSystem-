@@ -1,16 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion";
+import { loadUser } from "../features/auth/authSlice";
 
 function Home() {
-  const { user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  const token = useSelector((state) => state.auth.token);
+
+  useEffect(() => {
+    if (token) {
+      dispatch(loadUser()); // Load user data when the app starts
+    }
+  }, [dispatch, token]);
+
   return (
     <div className="min-h-screen">
       <div className="max-w-screen h-[450px] bg-blue-300 flex flex-col justify-center items-center gap-3">
         <h3 className="text-3xl font-semibold">Welcome to DocBook </h3>
         <p>Get your doctor's appointment done seamlessly</p>
-        <Link to={user ? "/dashboard" : "/login"}>
+        <Link to={token ? "/dashboard" : "/login"}>
           <motion.div
             whileHover={{ scale: 1.2 }}
             whileTap={{ scale: 0.8 }}

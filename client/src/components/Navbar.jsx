@@ -11,7 +11,7 @@ import { MdLogout } from "react-icons/md";
 const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { user } = useSelector((state) => state.auth);
+  const token = useSelector((state) => state.auth.token);
 
   const handleLogout = () => {
     dispatch(logout());
@@ -29,7 +29,7 @@ const Navbar = () => {
           <MdOutlineLocalHospital /> DocBook
         </Link>
         <div className="flex space-x-4">
-          {user ? (
+          {token ? (
             <>
               <Link
                 to="/dashboard"

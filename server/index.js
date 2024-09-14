@@ -10,7 +10,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://docbook-v1.vercel.app"],
+    origin: process.env.VITE_URL,
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })

@@ -10,10 +10,12 @@ import Navbar from "./components/Navbar";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Dashboard from "./components/Dashboard";
-import Home from "./components/Home";
+import Home from "./pages/Home";
 import "./App.css";
 import Footer from "./components/Footer";
 import { loadUser } from "./features/auth/authSlice";
+import BMIPage from "./pages/BMIPage";
+import BodyFatPage from "./pages/BodyFatPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -31,6 +33,8 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/bmi" element={<BMIPage />} />
+        <Route path="/bodyfat" element={<BodyFatPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Signup />} />
         <Route

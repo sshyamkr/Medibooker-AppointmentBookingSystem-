@@ -1,4 +1,9 @@
 #root {
+  max-width: 1280px;
   margin: 0 auto;
-  font-family: "Poppins", sans-serif;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background-color: #080e01;
 }

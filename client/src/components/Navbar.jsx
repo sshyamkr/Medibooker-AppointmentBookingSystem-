@@ -20,11 +20,11 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-indigo-600 p-4 shadow-md">
+    <nav className=" p-4 shadow-md">
       <div className="container mx-auto flex justify-between items-center px-4">
         <Link
           to={"/"}
-          className="text-white text-2xl font-bold flex flex-row items-center"
+          className="text-[#34F655] text-2xl font-bold flex flex-row items-center"
         >
           <MdOutlineLocalHospital /> DocBook
         </Link>
@@ -47,7 +47,7 @@ const Navbar = () => {
           ) : (
             <Link
               to="/login"
-              className="text-white hover:text-gray-300 flex flex-row items-center gap-1"
+              className="w-[100px] rounded-xl p-2 bg-[#BEF96F] flex flex-row gap-1 justify-center items-center"
             >
               <FaUser /> Login
             </Link>

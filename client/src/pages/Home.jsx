@@ -1,21 +1,48 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { motion } from "framer-motion";
-import { loadUser } from "../features/auth/authSlice";
+import mainPage from "../assets/mainPage.webp";
+import { FaArrowRight } from "react-icons/fa";
 
 function Home() {
-  const dispatch = useDispatch();
-  const token = useSelector((state) => state.auth.token);
+  // const dispatch = useDispatch();
+  // const token = useSelector((state) => state.auth.token);
 
-  useEffect(() => {
-    if (token) {
-      dispatch(loadUser()); // Load user data when the app starts
-    }
-  }, [dispatch, token]);
+  // useEffect(() => {
+  //   if (token) {
+  //     dispatch(loadUser()); // Load user data when the app starts
+  //   }
+  // }, [dispatch, token]);
 
   return (
-    <div className="min-h-screen">
+    <section className="min-h-screen mt-32">
+      <div className="flex sm:flex-row flex-col justify-evenly items-center">
+        {/* left side */}
+        <div className="flex flex-col items-start gap-8">
+          <div className="font-bold text-5xl text-[#F1FDDB]">
+            Effortlessly book <br />
+            appointments, track your <br /> health, and gain insights <br />{" "}
+            —all just a <span className="text-[#34F655]">click</span> away.
+          </div>
+          <Link
+            to={"/offer"}
+            className="w-[120px] rounded-xl py-3 px-2 bg-[#BEF96F] flex flex-row justify-between items-center font-medium"
+          >
+            Get Started <FaArrowRight />{" "}
+          </Link>
+        </div>
+        {/* right side */}
+        <div>
+          <img src={mainPage} alt="" className="w-[500px] h-[350px]" />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default Home;
+
+{
+  /* <div className="min-h-screen">
       <div className="max-w-screen h-[450px] bg-blue-300 flex flex-col justify-center items-center gap-3">
         <h3 className="text-3xl font-semibold">Welcome to DocBook </h3>
         <p>Get your doctor's appointment done seamlessly</p>
@@ -60,8 +87,5 @@ function Home() {
           </motion.div>
         </div>
       </div>
-    </div>
-  );
+    </div> */
 }
-
-export default Home;

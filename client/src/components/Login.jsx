@@ -15,7 +15,7 @@ const Login = () => {
     dispatch(loginUser({ username, password }))
       .unwrap()
       .then(() => {
-        navigate("/");
+        navigate("/offer");
         toast.success("Log In Success");
       })
       .catch((error) => {
@@ -25,9 +25,17 @@ const Login = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen">
-      <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-md">
-        <h2 className="text-2xl font-bold text-center">Login</h2>
+    <div
+      className="flex items-center justify-center min-h-screen"
+      style={{ backgroundColor: "#080e01" }}
+    >
+      <div className="w-full max-w-md p-8 space-y-8 bg-[#1a1f12] rounded-lg shadow-md">
+        <h2
+          className="text-2xl font-bold text-center"
+          style={{ color: "#f1fddb" }}
+        >
+          Login
+        </h2>
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           <div className="rounded-md shadow-sm -space-y-px">
             <div>
@@ -40,7 +48,7 @@ const Login = () => {
                 type="text"
                 autoComplete="username"
                 required
-                className="relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                className="relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-[#bef96f] focus:border-[#bef96f] focus:z-10 sm:text-sm"
                 placeholder="Username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
@@ -56,7 +64,7 @@ const Login = () => {
                 type="password"
                 autoComplete="current-password"
                 required
-                className="relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                className="relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-[#bef96f] focus:border-[#bef96f] focus:z-10 sm:text-sm"
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -66,19 +74,18 @@ const Login = () => {
           <div>
             <button
               type="submit"
-              className={`group relative flex w-full justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white 
-                bg-[#28da40] hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}
+              className={`group relative flex w-full justify-center py-2 px-4 border border-transparent text-sm font-semibold rounded-md text-[#080e01] bg-[#bef96f] hover:bg-[#9ee054] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#bef96f]`}
             >
               Login
             </button>
           </div>
         </form>
         <div className="text-center">
-          <p className="text-sm text-gray-600">
+          <p className="text-sm" style={{ color: "#f1fddb" }}>
             Not a user?{" "}
             <Link
               to="/register"
-              className="font-medium text-indigo-600 hover:text-indigo-500"
+              className="font-medium text-[#bef96f] hover:text-[#9ee054]"
             >
               Register
             </Link>

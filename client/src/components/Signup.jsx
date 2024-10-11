@@ -26,9 +26,17 @@ const Signup = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-md">
-        <h2 className="text-2xl font-bold text-center">Register</h2>
+    <div
+      className="flex items-center justify-center min-h-screen"
+      style={{ backgroundColor: "#080e01" }}
+    >
+      <div className="w-full max-w-md p-8 space-y-8 bg-[#1a1f12] rounded-lg shadow-md">
+        <h2
+          className="text-2xl font-bold text-center"
+          style={{ color: "#f1fddb" }}
+        >
+          Register
+        </h2>
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           <div className="rounded-md shadow-sm -space-y-px">
             <div>
@@ -41,7 +49,7 @@ const Signup = () => {
                 type="text"
                 autoComplete="username"
                 required
-                className="relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                className="relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-[#bef96f] focus:border-[#bef96f] focus:z-10 sm:text-sm"
                 placeholder="Username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
@@ -57,7 +65,7 @@ const Signup = () => {
                 type="password"
                 autoComplete="new-password"
                 required
-                className="relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                className="relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-[#bef96f] focus:border-[#bef96f] focus:z-10 sm:text-sm"
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -66,7 +74,8 @@ const Signup = () => {
             <div className="pt-4">
               <label
                 htmlFor="role"
-                className="block text-sm font-medium text-gray-700"
+                className="block text-sm font-medium"
+                style={{ color: "#f1fddb" }}
               >
                 Role
               </label>
@@ -75,7 +84,7 @@ const Signup = () => {
                 name="role"
                 value={role}
                 onChange={(e) => setRole(e.target.value)}
-                className="block w-full px-3 py-2 mt-1 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="block w-full px-3 py-2 mt-1 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-[#bef96f] focus:border-[#bef96f] sm:text-sm"
               >
                 <option value="patient">Patient</option>
                 <option value="doctor">Doctor</option>
@@ -86,20 +95,18 @@ const Signup = () => {
           <div>
             <button
               type="submit"
-              className={`group relative flex w-full justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white 
-                bg-[#28da40] hover:bg-indigo-700
-               focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}
+              className={`group relative flex w-full justify-center py-2 px-4 border border-transparent text-sm font-semibold rounded-md text-[#080e01] bg-[#bef96f] hover:bg-[#9ee054] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#bef96f]`}
             >
               Register
             </button>
           </div>
         </form>
         <div className="text-center">
-          <p className="text-sm text-gray-600">
+          <p className="text-sm" style={{ color: "#f1fddb" }}>
             Already a user?{" "}
             <Link
               to="/login"
-              className="font-medium text-indigo-600 hover:text-indigo-500"
+              className="font-medium text-[#bef96f] hover:text-[#9ee054]"
             >
               Login
             </Link>

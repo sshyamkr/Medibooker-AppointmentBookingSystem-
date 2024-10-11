@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { loadUser } from "../features/auth/authSlice";
 import offer from "../assets/offer.webp";
 import Card from "../components/Card";
+import { MdFitnessCenter } from "react-icons/md";
+import { IoIosBody, IoMdCalendar } from "react-icons/io";
 
 export default function OfferPage() {
   const dispatch = useDispatch();
@@ -22,9 +24,24 @@ export default function OfferPage() {
           What We Offer
         </div>
         <div className="flex sm:flex-row flex-col items-center justify-center gap-10">
-          <Card />
-          <Card />
-          <Card />
+          <Card
+            icon={<MdFitnessCenter />}
+            desc="Track Your Ideal Weight: Calculate Your BMI in Seconds"
+            btnText="Calculate"
+            link={"/bmi"}
+          />
+          <Card
+            icon={<IoIosBody />}
+            desc="Measure Your Body Fat, Achieve Your Health Goals"
+            btnText="Check"
+            link={"/bodyfat"}
+          />
+          <Card
+            icon={<IoMdCalendar />}
+            desc="Manage Your Appointments: View, Track, and Stay Updated"
+            btnText="Book"
+            link={token ? "/dashboard" : "/login"}
+          />
         </div>
       </div>
     </section>

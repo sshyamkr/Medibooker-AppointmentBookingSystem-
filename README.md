@@ -1,12 +1,21 @@
 # DocBook
 
-DocBook is a comprehensive appointment booking application that facilitates seamless interaction between doctors, patients, and administrators. Built using the MERN stack and Redux Toolkit for state management, docBook ensures a smooth and efficient workflow for managing appointments and consultations.
+<img src="images/1.png">
+<img src="images/2.png">
+<img src="images/3.png">
+<img src="images/4.png">
+<img src="images/5.png">
+<img src="images/6.png">
 
-![image](https://github.com/isayanpal/docBook/assets/102523492/2da28059-7cbd-44dd-8f9c-5dad8c7306b6)
-![image](https://github.com/isayanpal/docBook/assets/102523492/5a901e22-e185-484a-b963-d98106073189)
-![image](https://github.com/isayanpal/docBook/assets/102523492/1ed3c1a5-ca34-4d4e-9a34-bf1ef4ea296c)
+## What is it?
 
-## Live link - https://docbook-v1.vercel.app/
+DocBook is a dynamic appointment booking application designed to enhance communication and scheduling between doctors, patients, and administrators. Built using the MERN stack with Redux Toolkit for state management, DocBook offers a streamlined workflow for managing appointments and patient care. The application also features health tools like **BMI calculation** and **body fat percentage checks**, making it a one-stop solution for healthcare management.
+
+## Live Link
+
+[https://docbook-v1.vercel.app](https://docbook-v1.vercel.app)
+
+---
 
 ## Table of Contents
 
@@ -16,19 +25,27 @@ DocBook is a comprehensive appointment booking application that facilitates seam
 - [Usage](#usage)
 - [Contributing](#contributing)
 
+---
+
 ## Features
 
-- **Role-Based Login**: Secure and personalized access for Admins, Doctors, and Patients.
-- **Appointment Management**: Easy scheduling of appointments.
-- **User Profiles**: Comprehensive profiles for doctors and patients.
+- **Role-Based Login**: Secure and personalized access for **Admins**, **Doctors**, and **Patients**.
+- **Appointment Management**: Easy scheduling and tracking of doctor appointments.
+- **User Profiles**: Comprehensive profiles for both doctors and patients.
+- **BMI Calculator**: Calculate Body Mass Index (BMI) for tracking personal health.
+- **Body Fat Percentage Calculator**: Measure body fat percentage to monitor fitness levels.
+
+---
 
 ## Tech Stack
 
-- **Frontend**: React, Redux Toolkit, Tailwind css
+- **Frontend**: React, Redux Toolkit, Tailwind CSS, Framer Motion
 - **Backend**: Node.js, Express.js
 - **Database**: MongoDB
 - **Authentication**: JWT (JSON Web Tokens)
 - **Deployment**: Vercel, onRender
+
+---
 
 ## Installation
 

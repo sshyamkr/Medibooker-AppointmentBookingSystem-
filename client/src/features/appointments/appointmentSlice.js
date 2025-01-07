@@ -11,7 +11,7 @@ export const fetchAppointments = createAsyncThunk(
       const response = await axios.get(`${API_BASE_URL}/api/appointments`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      return response.data;
+      return response.data; // Ensure this contains doctor and patient references
     } catch (error) {
       return rejectWithValue(error.response?.data || error.message);
     }
@@ -30,7 +30,7 @@ export const createAppointment = createAsyncThunk(
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-      return response.data;
+      return response.data; // Ensure this contains doctor and patient details
     } catch (error) {
       return rejectWithValue(error.response?.data || error.message);
     }
@@ -45,7 +45,7 @@ export const deleteAppointment = createAsyncThunk(
       await axios.delete(`${API_BASE_URL}/api/appointments/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      return id;
+      return id; // This should be the id of the appointment to be removed
     } catch (error) {
       return rejectWithValue(error.response?.data || error.message);
     }
@@ -67,11 +67,11 @@ const appointmentSlice = createSlice({
       })
       .addCase(fetchAppointments.fulfilled, (state, action) => {
         state.loading = false;
-        state.appointments = action.payload;
+        state.appointments = action.payload; // Ensure payload has the right structure
       })
       .addCase(fetchAppointments.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload;
+        state.error = action.payload; // Store error for later use
       })
       .addCase(createAppointment.pending, (state) => {
         state.loading = true;
@@ -79,11 +79,11 @@ const appointmentSlice = createSlice({
       })
       .addCase(createAppointment.fulfilled, (state, action) => {
         state.loading = false;
-        state.appointments.push(action.payload);
+        state.appointments.push(action.payload); // Ensure payload has doctor and patient data
       })
       .addCase(createAppointment.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload;
+        state.error = action.payload; // Store error for later use
       })
       .addCase(deleteAppointment.pending, (state) => {
         state.loading = true;
@@ -92,12 +92,12 @@ const appointmentSlice = createSlice({
       .addCase(deleteAppointment.fulfilled, (state, action) => {
         state.loading = false;
         state.appointments = state.appointments.filter(
-          (appointment) => appointment._id !== action.payload
+          (appointment) => appointment._id !== action.payload // Remove appointment by ID
         );
       })
       .addCase(deleteAppointment.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload;
+        state.error = action.payload; // Store error for later use
       });
   },
 });
